@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="admin/common/template">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title >Danh sách thiết bị</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content" th:remove="tag">
+		<h2>Danh sách thiết bị</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th th:text="#{category.id}"></th>
+					<th th:text="#{category.name}"></th>
+					<th th:text="#{action}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="category: ${listCategory}">
+					<td th:text="${category.getId()}"></td>
+					<td th:text="${category.getName()}"></td>
+					<td>
+						<a th:href="@{'/admin/update-category/' + ${category.getId()}}"><button type="button" class="btn btn-info btn-lg glyphicon glyphicon-edit"></button></a>
+					    <a th:href="@{'/admin/delete-category/' + ${category.getId()}}"><button type="button" class="btn btn-danger btn-lg glyphicon glyphicon-trash"></button></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

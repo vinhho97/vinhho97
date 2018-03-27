@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="client/common/template">
+<head>
+<title th:text="#{category}"></title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<div class="gallery">
+			<div class="container">
+				<h3 class="title" >Sản phẩm hiện có</h3>
+				<div class="gallery-grids">
+					<div class="col-md-4 port-grids view view-fourth" th:each="post : ${listPost}">
+						<a class="example-image-link" th:href="@{'/post-image/' + ${post.getId()} }" data-lightbox="example-set" data-title=""> 
+							<img th:src="@{'/post-image/' + ${post.getId()} }" class="img-responsive" alt="" />
+							<div class="mask">
+								<p th:text="${post.getDescription()}"></p>
+							</div>
+						</a>
+					</div>
+					<div class="clearfix"></div>
+					<script th:src="@{/static/client/js/lightbox-plus-jquery.min.js}"></script>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

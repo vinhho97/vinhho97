@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="admin/common/template">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title th:text="#{post.update}"></title>
+</head>
+<body>
+	<div class="container" layout:fragment="content" th:remove="tag">
+		<h2 th:text="#{post.update}"></h2>
+		<form class="form-horizontal" th:action="@{/admin/update-post}" method="post" th:object="${updatePostForm}" enctype="multipart/form-data">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="description"  th:text="#{post.description}"></label>
+				<div class="col-sm-3">
+					<input type="hidden" required="required" class="form-control" name="id" th:field="*{id}" />
+					<input type="text" required="required" class="form-control" name="description" th:field="*{description}" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd" th:text="#{post.category}"></label>
+				<div class="col-sm-3">
+					<select required="required" class="form-control" id="sel1" th:field="*{categoryID}">
+						<option th:each="category : ${listCategory}" th:value="${category.getId()}" th:text="${category.getName()}"></option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd" th:text="#{post.image}"></label>
+				<div class="col-sm-3">
+					<input type="file" required="required" class="form-control" name="file" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary" th:text="#{update}"></button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

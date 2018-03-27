@@ -1,0 +1,36 @@
+<div th:fragment="header" th:remove="tag">
+	<!--header-->
+	<div class="logo">
+		<div class="container">
+			<div class="logo-info">
+				<a href="/">
+					<h1>Trang Chủ</h1> <!-- <span class="glyphicon glyphicon-grain" aria-hidden="true"></span> -->
+				</a>
+			</div>
+		</div>
+	</div>
+	<!--//header-->
+	<!--navigation-->
+	<div class="top-nav">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Menu</button>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="hvr-bounce-to-bottom"><a href="/">Trang Chủ</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="about.html">Giới Thiệu</a></li>
+					<li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li th:each="category: ${listCategory}"><a class="hvr-bounce-to-bottom" th:href="@{'/category/' + ${category.getId()} } " th:text="${category.getName()}"></a></li>
+						</ul></li>
+				
+					<li class="hvr-bounce-to-bottom"><a href="contact.html">Liên hệ</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+		</nav>
+	</div>
+	<!--//navigation-->
+</div>

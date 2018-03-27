@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="admin/common/template">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title >Danh sách sản phẩm</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content" th:remove="tag">
+		<h2 >Danh sách sản phẩm</h2>
+		<table class="table table-striped">
+			<colgroup>
+				<col width="10%" />
+				<col width="30%" />
+				<col width="30%" />
+				<col width="30%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th th:text="#{post.id}"> </th>
+					<th th:text="#{post.description}"></th>
+					<th th:text="#{post.image}"></th>
+					<th th:text="#{action}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="post: ${listPost}">
+					<td th:text="${post.getId()}"></td>
+					<td th:text="${post.getDescription()}"></td>
+					<td><img th:src="@{'/post-image/' + ${post.getId()} }" width="40%" height="auto" /></td>
+					<td><a th:href="@{'/admin/update-post/' + ${post.getId()}}"><button type="button" class="btn btn-info btn-lg glyphicon glyphicon-edit"></button></a> <a th:href="@{'/admin/delete-post/' + ${post.getId()}}"><button type="button" class="btn btn-danger btn-lg glyphicon glyphicon-trash"></button></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
